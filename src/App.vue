@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import '@/assets/styles/main.css';
 import * as pokemon from './pokemon';
 
 export default {
