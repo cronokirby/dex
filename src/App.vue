@@ -22,11 +22,15 @@
       id="error-pane"
       v-if="error"
     >Couldn't fetch that pokémon :(</div>
+    <div class="text-center" id="spinner">
+      <pulse-loader class="mt-20" :loading="loading" color="red" size="30px"></pulse-loader>
+    </div>
   </div>
 </template>
 
 <script>
-import MagnifyIcon from "vue-material-design-icons/Magnify.vue";
+import MagnifyIcon from 'vue-material-design-icons/Magnify.vue';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import PokemonCard from "./components/PokemonCard.vue";
 import Pokemon from "./pokemon";
 
@@ -34,6 +38,7 @@ export default {
   data() {
     return {
       name: "",
+      loading: false,
       pokemon: null,
       error: null
     };
@@ -43,17 +48,20 @@ export default {
     async fetch() {
       this.error = null;
       this.pokemon = null;
+      this.loading = true
       try {
         this.pokemon = await Pokemon.fromApi(this.name.toLowerCase());
       } catch (e) {
         this.error = e;
       }
+      this.loading = false;
     }
   },
 
   components: {
     MagnifyIcon,
-    PokemonCard
+    PokemonCard,
+    PulseLoader
   }
 };
 </script>
