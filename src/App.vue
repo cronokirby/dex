@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full bg-red-lightest" id="app">
+  <div class="h-screen bg-red-lightest" id="app">
     <div class="bg-red shadow-lg pt-6 pb-5" id="nav">
       <div class="flex" id="search">
         <div class="w-1/4"></div>
