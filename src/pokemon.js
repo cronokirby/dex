@@ -21,6 +21,7 @@ class Pokemon {
     constructor(name, data) {
         this.name = name;
         this.number = data.order;
+        this.types = data.types.map(x => x.type.name);
         this.art = artUrl(name);
     }
 
@@ -30,7 +31,6 @@ class Pokemon {
      * @param {string} name the name of the pokemon
      */
     static async fromApi(name) {
-        console.log(name);
         const url = API_ROOT + name;
         const data = await axios.get(url);
         return new Pokemon(name, data.data);
