@@ -14,7 +14,12 @@
         >
       </div>
     </div>
-    <pokemon-card v-if="loaded" v-bind:pokemon="pokemon"></pokemon-card>
+    <pokemon-card v-if="pokemon" v-bind:pokemon="pokemon"></pokemon-card>
+    <div
+      class="shadow-lg rounded mx-auto max-w-sm p-10 mt-8 text-red-darkest bg-white text-2xl"
+      id="error-pane"
+      v-if="error"
+    >Couldn't fetch that pokémon :(</div>
   </div>
 </template>
 
@@ -27,16 +32,20 @@ export default {
   data() {
     return {
       name: "",
-      loaded: false,
-      pokemon: {}
+      pokemon: null,
+      error: null
     };
   },
 
   methods: {
     async fetch() {
-      this.loaded = false;
-      this.pokemon = await Pokemon.fromApi(this.name.toLowerCase());
-      this.loaded = true;
+      this.error = null;
+      try {
+        this.pokemon = await Pokemon.fromApi(this.name.toLowerCase());
+      } catch (e) {
+        this.pokemon = null;
+        this.error = e;
+      }
     }
   },
 
@@ -53,5 +62,9 @@ export default {
   fill: white;
   height: 3em;
   width: 3em;
+}
+
+#error-pane {
+  border-left: solid red 10px;
 }
 </style>
