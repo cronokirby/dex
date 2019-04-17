@@ -33,7 +33,7 @@ class Pokemon {
         console.log(name);
         const url = API_ROOT + name;
         const data = await axios.get(url);
-        return new Pokemon(name, data);
+        return new Pokemon(name, data.data);
     }
 }
 export default Pokemon;

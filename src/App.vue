@@ -8,7 +8,7 @@
         placeholder="Search for a Pokémon"
       >
     </div>
-    <pokemon-card v-bind:pokemon="pokemon"></pokemon-card>
+    <pokemon-card v-if="loaded" v-bind:pokemon="pokemon"></pokemon-card>
   </div>
 </template>
 
@@ -21,13 +21,16 @@ export default {
   data() {
     return {
       name: "",
+      loaded: false,
       pokemon: {}
     };
   },
 
   methods: {
     async fetch() {
+      this.loaded = false;
       this.pokemon = await Pokemon.fromApi(this.name.toLowerCase());
+      this.loaded = true;
     }
   },
 
