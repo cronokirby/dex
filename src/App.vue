@@ -1,37 +1,38 @@
 <template>
   <div class="h-screen bg-green-lightest" id="app">
-    <div class="bg-green shadow-lg pt-6 pb-5" id="search">
+    <div class="text-center bg-green shadow-lg pt-6 pb-5" id="search">
       <input
-        class="border rounded p-2 ml-8 text-grey-darker text-lg"
+        class="border rounded p-2 text-grey-darker text-lg"
         v-model="name"
+        v-on:keyup.enter="fetch"
         placeholder="Search for a Pokémon"
       >
     </div>
-    <div
-      class="border rounded bg-white mx-auto mt-5 p-4 text-center shadow-lg max-w-sm"
-      id="pokemon"
-    >
-      <h1 class="uppercase mb-4">{{ name }}</h1>
-      <img v-bind:src="imageLink">
-    </div>
+    <pokemon-card v-bind:pokemon="pokemon"></pokemon-card>
   </div>
 </template>
 
 <script>
 import "@/styles/main.css";
-import * as pokemon from "./pokemon";
+import PokemonCard from "./components/PokemonCard.vue";
+import Pokemon from "./pokemon";
 
 export default {
   data() {
     return {
-      name: ""
+      name: "",
+      pokemon: {}
     };
   },
 
-  computed: {
-    imageLink() {
-      return pokemon.artUrl(this.name);
+  methods: {
+    async fetch() {
+      this.pokemon = await Pokemon.fromApi(this.name.toLowerCase());
     }
+  },
+
+  components: {
+    PokemonCard
   }
 };
 </script>
