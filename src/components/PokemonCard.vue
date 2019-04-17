@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border rounded bg-white mx-auto mt-10 text-center shadow-lg max-w-sm px-10 py-8"
+    class="border rounded bg-white mx-auto md:mt-10 text-center shadow-lg max-w-sm px-10 py-8"
     id="pokemon"
   >
     <div class="flex" id="pokemon-name">
@@ -16,7 +16,9 @@
       >{{type}}</span>
     </div>
     <div class="mt-8" id="flavor">
-      <p class="text-base text-grey-darker text-justify leading-normal font-sans font-medium">{{pokemon.flavorText}}</p>
+      <p
+        class="text-base text-grey-darker text-justify leading-normal font-sans font-medium"
+      >{{pokemon.flavorText}}</p>
     </div>
   </div>
 </template>
