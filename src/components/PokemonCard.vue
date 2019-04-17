@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border rounded bg-white mx-auto md:mt-10 text-center shadow-lg max-w-sm px-10 py-8"
+    class="border rounded bg-white mx-auto md:mt-10 text-center shadow-lg max-w-sm px-4 md:px-10 py-8"
     id="pokemon"
   >
     <div class="flex" id="pokemon-name">
