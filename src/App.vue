@@ -1,6 +1,6 @@
 <template>
-  <div class="h-screen bg-green-lightest" id="app">
-    <div class="text-center bg-green shadow-lg pt-6 pb-5" id="search">
+  <div class="h-screen bg-red-lightest" id="app">
+    <div class="text-center bg-red shadow-lg pt-6 pb-5" id="search">
       <input
         class="border rounded p-2 text-grey-darker text-lg"
         v-model="name"
