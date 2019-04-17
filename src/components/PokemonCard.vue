@@ -15,10 +15,20 @@
         :key="type"
       >{{type}}</span>
     </div>
-    <div class="mt-8" id="flavor">
+    <div class="border rounded p-2 mt-8" id="flavor">
       <p
         class="text-base text-grey-darker text-justify leading-normal font-sans font-medium"
       >{{pokemon.flavorText}}</p>
+    </div>
+    <div class="flex mt-5" id="dimensions">
+      <div class="border shadow p-2 rounded mx-auto text-lg" id="height">
+        <span class="font-bold">Height:</span>
+        <span class="font-bold text-grey-darkest px-2">{{pokemon.height}} m</span>
+      </div>
+      <div class="border p-2 rounded mx-auto text-lg" id="weight">
+        <span class="font-bold">Weight:</span>
+        <span class="font-bold text-grey-darkest px-2">{{pokemon.weight}} kg</span>
+      </div>
     </div>
   </div>
 </template>

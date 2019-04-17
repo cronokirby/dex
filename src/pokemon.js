@@ -22,6 +22,10 @@ class Pokemon {
         this.name = name;
         this.number = data.order;
         this.types = data.types.map(x => x.type.name);
+        // in kg
+        this.weight = data.weight / 10;
+        // in m
+        this.height = data.height / 10;
         const entries = speciesData.flavor_text_entries;
         this.flavorText = entries.find(x => x.language.name === 'en').flavor_text;
         this.art = artUrl(name);
