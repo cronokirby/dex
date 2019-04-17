@@ -14,7 +14,9 @@
         >
       </div>
     </div>
-    <pokemon-card v-if="pokemon" v-bind:pokemon="pokemon"></pokemon-card>
+    <transition name="slide-fade">
+      <pokemon-card v-if="pokemon" v-bind:pokemon="pokemon"></pokemon-card>
+    </transition>
     <div
       class="shadow-lg rounded mx-auto max-w-sm p-10 mt-8 text-red-darkest bg-white text-2xl"
       id="error-pane"
@@ -40,10 +42,10 @@ export default {
   methods: {
     async fetch() {
       this.error = null;
+      this.pokemon = null;
       try {
         this.pokemon = await Pokemon.fromApi(this.name.toLowerCase());
       } catch (e) {
-        this.pokemon = null;
         this.error = e;
       }
     }
@@ -66,5 +68,14 @@ export default {
 
 #error-pane {
   border-left: solid red 10px;
+}
+
+.slide-fade-enter-active {
+  transition: all .6s ease;
+}
+
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
 }
 </style>
