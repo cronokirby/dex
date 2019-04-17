@@ -9,59 +9,32 @@
         <input
           class="border rounded p-2 text-grey-darker text-lg mr-4"
           v-model="name"
-          v-on:keyup.enter="fetch"
+          v-on:keyup.enter="search"
           placeholder="Search for a Pokémon"
         >
       </div>
     </div>
-    <transition name="slide-fade">
-      <pokemon-card v-if="pokemon" v-bind:pokemon="pokemon"></pokemon-card>
-    </transition>
-    <div
-      class="shadow-lg rounded mx-auto max-w-sm p-10 mt-8 text-red-darkest bg-white text-2xl"
-      id="error-pane"
-      v-if="error"
-    >Couldn't fetch that pokémon :(</div>
-    <div class="text-center" id="spinner">
-      <pulse-loader class="mt-20" :loading="loading" color="red" size="30px"></pulse-loader>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
-
 <script>
-import MagnifyIcon from 'vue-material-design-icons/Magnify.vue';
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
-import PokemonCard from "./components/PokemonCard.vue";
-import Pokemon from "./pokemon";
+import MagnifyIcon from "vue-material-design-icons/Magnify.vue";
 
 export default {
   data() {
     return {
-      name: "",
-      loading: false,
-      pokemon: null,
-      error: null
+      name: ""
     };
   },
 
   methods: {
-    async fetch() {
-      this.error = null;
-      this.pokemon = null;
-      this.loading = true
-      try {
-        this.pokemon = await Pokemon.fromApi(this.name.toLowerCase());
-      } catch (e) {
-        this.error = e;
-      }
-      this.loading = false;
+    search() {
+      this.$router.push({ name: "pokemon", params: { name: this.name } });
     }
   },
 
   components: {
-    MagnifyIcon,
-    PokemonCard,
-    PulseLoader
+    MagnifyIcon
   }
 };
 </script>
@@ -72,18 +45,5 @@ export default {
   fill: white;
   height: 3em;
   width: 3em;
-}
-
-#error-pane {
-  border-left: solid red 10px;
-}
-
-.slide-fade-enter-active {
-  transition: all .6s ease;
-}
-
-.slide-fade-enter, .slide-fade-leave-to {
-  transform: translateY(-20px);
-  opacity: 0;
 }
 </style>

@@ -2,7 +2,6 @@
   "name": "dex",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cronokirby.github.io/dex",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -13,6 +12,7 @@
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-material-design-icons": "^3.1.0",
+    "vue-router": "^3.0.3",
     "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
@@ -43,5 +43,6 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "homepage": "https://cronokirby.github.io/dex"
 }
