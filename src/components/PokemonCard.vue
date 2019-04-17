@@ -7,13 +7,16 @@
       <span class="text-3xl flex-auto font-bold uppercase">{{ pokemon.name }}</span>
       <span class="text-3xl flex-auto font-bold text-grey-darker">{{ numberText }}</span>
     </div>
-    <img class="my-4" v-bind:src="pokemon.art">
-    <div id="types">
+    <img class="my-5" v-bind:src="pokemon.art">
+    <div class="my-3" id="types">
       <span
         v-bind:class="`rounded shadow-md text-2xl text-grey-lightest font-bold uppercase mx-2 p-2 ${type}`"
         v-for="type in pokemon.types"
         :key="type"
       >{{type}}</span>
+    </div>
+    <div class="mt-8" id="flavor">
+      <p class="text-base text-grey-darker text-justify leading-normal font-sans font-medium">{{pokemon.flavorText}}</p>
     </div>
   </div>
 </template>

@@ -18,10 +18,12 @@ class Pokemon {
      * @param {string} name the name of the pokemon
      * @param data fetched from the pokemon api
      */
-    constructor(name, data) {
+    constructor(name, data, speciesData) {
         this.name = name;
         this.number = data.order;
         this.types = data.types.map(x => x.type.name);
+        const entries = speciesData.flavor_text_entries;
+        this.flavorText = entries.find(x => x.language.name === 'en').flavor_text;
         this.art = artUrl(name);
     }
 
@@ -33,7 +35,8 @@ class Pokemon {
     static async fromApi(name) {
         const url = API_ROOT + name;
         const data = await axios.get(url);
-        return new Pokemon(name, data.data);
+        const speciesData = await axios.get(data.data.species.url);
+        return new Pokemon(name, data.data, speciesData.data);
     }
 }
 export default Pokemon;
