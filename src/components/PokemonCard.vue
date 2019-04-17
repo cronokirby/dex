@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border rounded bg-white mx-auto md:mt-10 text-center shadow-lg max-w-sm px-4 md:px-10 py-8"
+    class="border rounded bg-white mx-auto md:mt-10 text-center shadow-lg max-w-sm px-4 md:px-10 py-4"
     id="pokemon"
   >
     <div class="flex" id="pokemon-name">
@@ -30,16 +30,22 @@
         <span class="font-bold text-grey-darkest px-2">{{pokemon.weight}} kg</span>
       </div>
     </div>
+    <stats :stats="pokemon.stats"></stats>
   </div>
 </template>
 
 <script>
+import Stats from './Stats.vue';
+
 export default {
-  props: ["pokemon"],
+  props: ['pokemon'],
   computed: {
     numberText() {
-      return "#" + `${this.pokemon.number}`.padStart(3, "0");
+      return '#' + `${this.pokemon.number}`.padStart(3, '0');
     }
+  },
+  components: {
+    Stats
   }
 };
 </script>

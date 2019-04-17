@@ -28,6 +28,12 @@ class Pokemon {
         this.height = data.height / 10;
         const entries = speciesData.flavor_text_entries;
         this.flavorText = entries.find(x => x.language.name === 'en').flavor_text;
+        this.stats = {};
+        for (let stat of data.stats) {
+            let name = stat.stat.name;
+            name = name.replace('-', '_');
+            this.stats[name] = stat.base_stat;
+        }
         this.art = artUrl(name);
     }
 
