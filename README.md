@@ -1,27 +1,21 @@
 # dex
-Trying out stuff for a pokedex thingy.
+Dex is a simple little pokedex. It lets you search for pokemon and
+shows a little info card about them.
 
-## Project setup
+![Here's an example page](https://cdn.discordapp.com/attachments/251783968515555330/567913175714889789/unknown.png)
+
+## Building the project
+Dependencies can be installed with:
 ```
 npm install
 ```
-
-### Compiles and hot-reloads for development
+The development server can then be run with:
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+For building the final product, run:
 ```
 npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
+serve -s dist
 ```
