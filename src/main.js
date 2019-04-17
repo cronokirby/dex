@@ -1,5 +1,9 @@
+import 'vue-material-design-icons/styles.css';
+import "@/styles/main.css";
+
 import Vue from 'vue'
 import App from './App.vue'
+
 
 Vue.config.productionTip = false
 
