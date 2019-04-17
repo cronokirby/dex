@@ -39,7 +39,7 @@
       <span class="flex-grow pl-2 text-left bg-pink">Speed:</span>
       <span class="bg-pink pr-2">{{stats.speed}}</span>
       <div class="flex text-left w-1/2 md:w-2/3 bg-pink-lighter" id="speed-bar">
-        <span class="bg-pink" :style="{width: spDefWidth}"></span>
+        <span class="bg-pink" :style="{width: speedWidth}"></span>
       </div>
     </div>
     <div class="flex my-2 shadow-md" id="total">
